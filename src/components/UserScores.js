@@ -1,21 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import UserContext from "../context/UserContext";
 
 
 const UserScores = () => {
 
+  const { player, setPlayer } = useContext(UserContext)
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const newPlayer = {...player}
+    newPlayer.name = event.target.name.value
+    setPlayer(newPlayer)
+  }
+
   return (
     <>
       <h3>User Scores</h3>
-      <UserContext.Consumer>
-        {({player, setPlayer}) => {
-          return (
-
-            <p>Player is {player.name}..</p>
-
-          )
-        }}
-      </UserContext.Consumer>
+      <p>Hello {player.name}..</p>
+      <form onSubmit={handleSubmit}>
+      <input type="text" name="name" />
+      <input type="submit" value="Save Name" />
+      </form>
     </>
   )
 }
