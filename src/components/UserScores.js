@@ -8,7 +8,7 @@ const UserScores = () => {
     <>
       <h3>User Scores</h3>
       <UserContext.Consumer>
-        {(player) => {
+        {({player, setPlayer}) => {
           return (
 
             <p>Player is {player.name}..</p>
