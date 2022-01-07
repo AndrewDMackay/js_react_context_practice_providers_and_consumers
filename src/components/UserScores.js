@@ -1,4 +1,5 @@
 import React from "react";
+import UserContext from "../context/UserContext";
 
 
 const UserScores = () => {
@@ -6,6 +7,15 @@ const UserScores = () => {
   return (
     <>
       <h3>User Scores</h3>
+      <UserContext.Consumer>
+        {(player) => {
+          return (
+
+            <p>Player is {player.name}..</p>
+
+          )
+        }}
+      </UserContext.Consumer>
     </>
   )
 }
